@@ -3,12 +3,14 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import CreateArea from "./CreateArea";
+import { stickeyNotes_backend, stickyNotes } from "../../../declarations/stickeyNotes_backend";
 
 function App() {
   const [notes, setNotes] = useState([]);
 
   function addNote(newNote) {
     setNotes(prevNotes => {
+      stickeyNotes_backend.createNote(newNote.title, newNote.content)
       return [...prevNotes, newNote];
     });
   }
